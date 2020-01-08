@@ -12,10 +12,10 @@
 const { Pool } = require('pg');
 const pool = new Pool({
   database: 'sdc_pg',
-  host: 'ec2-54-183-209-135.us-west-1.compute.amazonaws.com',
+  host: 'ec2-52-53-254-132.us-west-1.compute.amazonaws.com',
 //   host: 'ec2-13-57-30-36.us-west-1.compute.amazonaws.com',
-  user: 'postgres',
-  password: '1234',
+  user: 'ubuntu',
+  password: 'pw',
   max: 15,
   idleTimeoutMillis: 3000,
   connectionTimeOutMillis: 2000
