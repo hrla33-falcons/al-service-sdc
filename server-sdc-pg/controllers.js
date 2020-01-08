@@ -3,9 +3,7 @@ const dbPgHelpers = require('../db-pg/query/dbHelpersPromise');
 
 const controllers = {
     getAll: (req, res) => {
-        dbPgHelpers.getAll((err, results) => {
-            console.log(err);
-            console.log(results);
+        dbPgHelpers.getAll((err, results) => { 
             if (err) {
                 res.status(404).send(err);
             } else {
