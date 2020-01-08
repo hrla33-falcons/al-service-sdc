@@ -27,7 +27,7 @@ class ShowAllHistory extends React.Component {
     axios.get('/products')
       .then((response) => {
         this.setState({
-          history: this.shuffleArray(response.data.rows)
+          history: this.shuffleArray(response.data)
         })
       })
       .then(() => {
