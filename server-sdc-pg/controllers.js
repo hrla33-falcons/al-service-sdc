@@ -1,5 +1,5 @@
 // jshint esversion:6
-const dbPgHelpers = require('../db-pg/query/dbHelpers');
+const dbPgHelpers = require('../db-pg/query/dbHelpersPromise');
 
 const controllers = {
     getAll: (req, res) => {
