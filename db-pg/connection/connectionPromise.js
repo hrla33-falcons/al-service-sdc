@@ -14,20 +14,20 @@ const initOptions = {
 
 const pgp = pgPromise(initOptions);
 
-// const cn = {
-//     host: 'ec2-52-53-254-132.us-west-1.compute.amazonaws.com', // server name or IP address;
-//     port: 5432,
-//     database: 'sdc_pg',
-//     user: 'ubuntu',
-//     password: 'pw'
-// };
-
 const cn = {
-    host: 'localhost', // server name or IP address;
+    host: 'ec2-52-53-254-132.us-west-1.compute.amazonaws.com', // server name or IP address;
     port: 5432,
     database: 'sdc_pg',
-    user: 'austinliu'
+    user: 'ubuntu',
+    password: 'pw'
 };
+
+// const cn = {
+//     host: 'localhost', // server name or IP address;
+//     port: 5432,
+//     database: 'sdc_pg',
+//     user: 'austinliu'
+// };
 
 // const connectionString = 'postgres://localhost:5432/sdc_pg';
 // Creating the database instance:

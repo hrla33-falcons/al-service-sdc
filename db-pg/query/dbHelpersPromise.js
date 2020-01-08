@@ -4,13 +4,9 @@ console.log('DB connected');
 
 const dbHelpers = {
     getAll: function(cb) {
-        pgClient.any(`select * from products limit 25`, (err, results) => {
-            if (err) {
-                cb(err);
-            } else {
-                cb(null, results);
-            }
-        });
+        pgClient.any(`select * from products limit 25`)
+        .then(data => cb(null, data))
+        .catch(error => cb(error));
     },
     getOne: function(id, cb) {
         pgClient.any(`select * from products where id=$1`, [id])
