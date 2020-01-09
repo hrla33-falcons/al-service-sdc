@@ -15,7 +15,7 @@ const initOptions = {
 const pgp = pgPromise(initOptions);
 
 const cn = {
-    host: 'ec2-52-53-254-132.us-west-1.compute.amazonaws.com', // server name or IP address;
+    host: '172.31.3.120', // server name or IP address;
     port: 5432,
     database: 'sdc_pg',
     user: 'ubuntu',
