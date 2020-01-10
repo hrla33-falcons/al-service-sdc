@@ -70,7 +70,7 @@ export default class AddBagModal extends React.Component {
                 <div className="as-pairsWellWith">
                   {this.state.productList.slice(0, 4).map((product, i) => (
                     <div className="as-pairsWellWithEntry">
-                      <AddBagModalListEntry data={product} key={i} />
+                      <AddBagModalListEntry data={product.data} key={i} />
                     </div>
                   ))}
                 </div>

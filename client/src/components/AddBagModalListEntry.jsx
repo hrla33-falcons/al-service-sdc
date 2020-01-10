@@ -55,7 +55,7 @@ const AddBagModalListEntry = props => {
       <div className="as-price">${props.data.price}</div>
       <span className="as-starRatings">
         {ratingHandler(props.data.rating)} &nbsp; {props.data.rating} &nbsp; (
-        {props.data.numberRatings}){" "}
+        {props.data.numberratings}){" "}
       </span>
     </div>
   );

@@ -47,7 +47,7 @@ const ProductListEntry = props => {
       <div className="as-price">${props.product.price}</div>
       <span className="as-starRatings">
         {ratingHandler(props.product.rating)} &nbsp; {props.product.rating}{" "}
-        &nbsp; ({props.product.numberRatings})
+        &nbsp; ({props.product.numberratings})
       </span>
     </div>
   );

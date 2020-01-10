@@ -48,7 +48,7 @@ class ShowAllHistory extends React.Component {
         {/* <span> */}
           <div className="as-styledHistory">
             {this.state.latestHistory.map((item, index) => (
-              <ShowAllHistoryEntry product={item} key={index} />
+              <ShowAllHistoryEntry product={item.data} key={index} />
             ))}
           </div>
           <span className="as-styledShowHistory">Show all history</span>

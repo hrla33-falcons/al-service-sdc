@@ -79,7 +79,7 @@ class StickyFooter extends React.Component {
             <span className="as-modalImage">
               {/* {console.log(this.props.product.itemimage)} */}
               <img
-                src={this.props.productDisplay.itemimage}
+                src={this.props.productDisplay.data.itemimage}
                 className="as-styledHistoryProductImage"
                 height="55"
                 width="55"
@@ -87,7 +87,7 @@ class StickyFooter extends React.Component {
             </span>
             <span>
               <div className="as-modalText">
-                {this.props.productDisplay.itemname}
+                {this.props.productDisplay.data.itemname}
               </div>
               <div className="as-modalLink">Show Price</div>
             </span>

@@ -22,7 +22,7 @@ promise.promisifyAll(redis.Multi.prototype);
 const app = express();
 const port = 3001;
 
-const client = redis.createClient(6379, '172.31.3.120');
+const client = redis.createClient();
 
 client.on('connect', () => {
     console.log(`connected to redis`);
@@ -62,7 +62,7 @@ app.use('/other', router);
                 const resultJSON = JSON.parse(results);
                 return res.set({'source': 'redis'}).status(200).send(resultJSON);
             } else {
-                return dbPromise.any(`select * from products where id=$1`, [id])
+                return dbPromise.any(`select products.data from products where id=$1`, [id])
                 .then(result => {
                     client.setex(`product:${id}`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);
@@ -81,7 +81,7 @@ app.use('/other', router);
                 const resultJSON = JSON.parse(results);
                 return res.set({'source': 'redis'}).status(200).send(resultJSON);
             } else {
-                return dbPromise.any(`select * from products limit 25`)
+                return dbPromise.any(`select products.data from products limit 25`)
                 .then(result => {
                     client.setex(`products`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);

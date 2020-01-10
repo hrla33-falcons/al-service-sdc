@@ -45,7 +45,7 @@ const MightLikeProductListEntry = (props) => {
       <div className="as-description">{props.MightLikeProduct.description}</div>
       <div className="as-description">{props.MightLikeProduct.typesize}</div>
       <div className="as-price">${props.MightLikeProduct.price}</div>
-      <span className="as-starRatings">{ratingHandler(props.MightLikeProduct.rating)} &nbsp; {props.MightLikeProduct.rating} &nbsp; ({props.MightLikeProduct.numberRatings}) </span>
+      <span className="as-starRatings">{ratingHandler(props.MightLikeProduct.rating)} &nbsp; {props.MightLikeProduct.rating} &nbsp; ({props.MightLikeProduct.numberratings}) </span>
     </div>
   )
 }

@@ -14,7 +14,7 @@ const AddBagModalList = props => {
       <div className="as-styledProductList">
         {props.allLikedProducts.map((item, index) => (
           <AddBagModalListEntry
-            MightLikeProduct={item}
+            MightLikeProduct={item.data}
             key={`AddBagModalListEntry-${index}`}
             index={index}
           />

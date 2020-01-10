@@ -13,7 +13,7 @@ const ProductList = props => {
       <div className="as-styledProductList">
         {props.allProducts.map((item, index) => (
           <ProductListEntry
-            product={item}
+            product={item.data}
             key={`ProductList-${index}`}
             index={index}
           />

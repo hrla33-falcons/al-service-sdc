@@ -14,7 +14,7 @@ const MightLikeProductList = props => {
       <div className="as-styledProductList">
         {props.allLikedProducts.map((item, index) => (
           <MightLikeProductListEntry
-            MightLikeProduct={item}
+            MightLikeProduct={item.data}
             key={`MightLikeProductList-${index}`}
             index={index}
           />
