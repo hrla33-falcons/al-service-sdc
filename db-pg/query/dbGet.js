@@ -1,11 +1,11 @@
 
 const {Client} = require('pg')
 const db = new Client({
+    host: '172.31.3.120', // server name or IP address;
+    port: 5432,
     database: 'sdc_pg',
-    host: 'ec2-52-53-254-132.us-west-1.compute.amazonaws.com',
-  //   host: 'ec2-13-57-30-36.us-west-1.compute.amazonaws.com',
     user: 'ubuntu',
-    password: 'pw',
+    password: 'pw'
 });
 
 
@@ -23,7 +23,7 @@ const db = new Client({
         console.log(`something went wrong getting listingid ${id}  ${ex}`)
     }
     finally {
-        await db.end()
+        // await db.end()
     }
 }
 
