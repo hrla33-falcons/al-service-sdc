@@ -12,7 +12,7 @@ const controllers = {
         });
     },
     getOne: (req, res) => {
-        get(req.params.id, (err, results) => {
+        get(Number(req.params.id), (err, results) => {
             if (err) {
                 res.status(404).send(err);
             } else {
