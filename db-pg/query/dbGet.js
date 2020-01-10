@@ -21,6 +21,9 @@ const db = new Client({
     catch(ex) {
         console.log(`something went wrong getting listingid ${id}  ${ex}`)
     }
+    finally {
+        await db.end()
+    }
 }
 
 
