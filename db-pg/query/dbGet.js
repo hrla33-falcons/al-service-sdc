@@ -1,15 +1,15 @@
 
-const {Client} = require('pg')
-const db = new Client({
+const {Pool} = require('pg')
+const db = new Pool({
     host: '172.31.3.120', // server name or IP address;
     port: 5432,
     database: 'sdc_pg',
     user: 'ubuntu',
-    password: 'pw'
+    password: 'pw',
+    max: 15,
+    idleTimeoutMillis: 3000,
+    connectionTimeOutMillis: 2000
 });
-
-
-    db.connect()
     //gets all transcation information along with budget information based off the transactions category id
     async function getter (id,cb) {
         try{
