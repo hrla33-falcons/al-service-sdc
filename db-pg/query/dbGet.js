@@ -13,6 +13,7 @@ const db = new Client({
     //gets all transcation information along with budget information based off the transactions category id
     async function getter (id,cb) {
         try{
+            console.log(id);
             await db.query(`SELECT * FROM products where id=${id}`)
             .then((result) => cb(null,result))
             .catch((err) => cb(err))
