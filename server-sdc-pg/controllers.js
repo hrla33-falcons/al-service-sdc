@@ -13,7 +13,7 @@ const controllers = {
     },
     getOne: (req, res) => {
         console.log(req.params.id);
-        get(Number(req.params.id), (err, results) => {
+        dbPgHelpers.getOne(Number(req.params.id), (err, results) => {
             if (err) {
                 res.status(404).send(err);
             } else {
