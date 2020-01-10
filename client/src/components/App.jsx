@@ -42,7 +42,6 @@ class App extends React.Component {
       .get("/products")
       // .then((response) => console.log(response.data.rows))
       .then(response => {
-
         this.setState({
           onLoadProducts: response.data
         });
