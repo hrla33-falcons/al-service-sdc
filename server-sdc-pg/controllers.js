@@ -12,10 +12,12 @@ const controllers = {
         });
     },
     getOne: (req, res) => {
+        console.log(req.params);
         get(req.params.id, (err, results) => {
             if (err) {
                 res.status(404).send(err);
             } else {
+                console.log(results);
                 res.status(200).send(results);
             }
         });
