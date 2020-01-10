@@ -11,7 +11,7 @@ const db = new Client({
 
     db.connect()
     //gets all transcation information along with budget information based off the transactions category id
-    async function getter ({id},cb) {
+    async function getter (id,cb) {
         try{
             await db.query(`SELECT * FROM products where id=${id}`)
             .then((result) => cb(null,result))
