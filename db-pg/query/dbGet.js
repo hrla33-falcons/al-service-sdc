@@ -13,17 +13,13 @@ const db = new Client({
     //gets all transcation information along with budget information based off the transactions category id
     async function getter (id,cb) {
         try{
-            console.log(id);
             await db.query(`SELECT * FROM products where id=${id}`)
-            .then((result) => cb(null,result))
+            .then((result) => cb(null,result.rows))
             .catch((err) => cb(err))
         }
 
     catch(ex) {
         console.log(`something went wrong getting listingid ${id}  ${ex}`)
-    }
-    finally {
-        // await db.end()
     }
 }
 
