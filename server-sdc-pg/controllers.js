@@ -1,6 +1,6 @@
 // jshint esversion:6
 const dbPgHelpers = require('../db-pg/query/dbHelpersPromise');
-
+const get = require('../db-pg/query/dbGet');
 const controllers = {
     getAll: (req, res) => {
         dbPgHelpers.getAll((err, results) => { 
@@ -12,11 +12,11 @@ const controllers = {
         });
     },
     getOne: (req, res) => {
-        dbPgHelpers.getOne(req.params.id, (err, results) => {
+        get(req.params.id, (err, results) => {
             if (err) {
                 res.status(404).send(err);
             } else {
-                res.status(200).send(results.rows);
+                res.status(200).send(results);
             }
         });
     },
