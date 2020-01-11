@@ -40,23 +40,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 // app.use(morgan('dev'));
 app.use('/other', router);
 
-// if (cluster.isMaster) {
-//     masterProcess();
-//   } else {
-//     childProcess();
-//   }
+if (cluster.isMaster) {
+    masterProcess();
+  } else {
+    childProcess();
+  }
 
-//   function masterProcess() {
-//     console.log(`Master ${process.pid} is running!`);
+  function masterProcess() {
+    console.log(`Master ${process.pid} is running!`);
   
-//     for (let i = 0; i < numCPUs; i++) {
-//       console.log(`Forking process num ${i}...`);
-//       cluster.fork();
-//     }
-//   }
+    for (let i = 0; i < numCPUs; i++) {
+      console.log(`Forking process num ${i}...`);
+      cluster.fork();
+    }
+  }
 
-//   function childProcess() {
-    // console.log(`Worker ${process.pid} started...`);
+  function childProcess() {
+    console.log(`Worker ${process.pid} started...`);
     app.use(express.static(path.join(__dirname, '../client/dist')));
     app.get(`/products/:id`, (req, res) => {
         let id = req.params.id;
@@ -97,9 +97,10 @@ app.use('/other', router);
             });
         // });
     // });
-  
     app.listen(port, () => console.log(`you're listening to port ${port}`));
-//   }
+
+  }
+
 
 module.exports = app;
 
