@@ -22,7 +22,10 @@ promise.promisifyAll(redis.Multi.prototype);
 const app = express();
 const port = 3001;
 
-const client = redis.createClient();
+const client = redis.createClient({
+    port: 6379,
+    host: '172.31.3.120'
+});
 
 client.on('connect', () => {
     console.log(`connected to redis`);
