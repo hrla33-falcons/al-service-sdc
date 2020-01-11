@@ -24,7 +24,7 @@ const port = 3001;
 
 const client = redis.createClient({
     port: 6379,
-    host: '172.31.3.120'
+    host: '127.0.0.1'
 });
 
 client.on('connect', () => {
