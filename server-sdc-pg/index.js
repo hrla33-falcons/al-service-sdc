@@ -12,27 +12,27 @@ const cors = require('cors');
 const dbPromise = require('../db-pg/connection/connectionPromise').db;
 const promise = require('bluebird');
 
-promise.config({
-    longStackTraces: true
-});
+// promise.config({
+//     longStackTraces: true
+// });
 
-promise.promisifyAll(redis.RedisClient.prototype);
-promise.promisifyAll(redis.Multi.prototype);
+// promise.promisifyAll(redis.RedisClient.prototype);
+// promise.promisifyAll(redis.Multi.prototype);
 
 const app = express();
 const port = 3001;
 
-const client = redis.createClient({
-    // port: 6379,
-    // host: '127.0.0.1'
-});
+// const client = redis.createClient({
+//     // port: 6379,
+//     // host: '127.0.0.1'
+// });
 
-client.on('connect', () => {
-    console.log(`connected to redis`);
-});
-client.on('error', err => {
-    console.log(`Error: ${err}`);
-});
+// client.on('connect', () => {
+//     console.log(`connected to redis`);
+// });
+// client.on('error', err => {
+//     console.log(`Error: ${err}`);
+// });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -60,41 +60,43 @@ app.use('/other', router);
     app.use(express.static(path.join(__dirname, '../client/dist')));
     app.get(`/products/:id`, (req, res) => {
         let id = req.params.id;
-        return client.get(`product:${id}`, (err, results) => {
-            if (results) {
-                const resultJSON = JSON.parse(results);
-                return res.set({'source': 'redis'}).status(200).send(resultJSON);
-            } else {
-                return dbPromise.any(`select products.data from products where id=$1`, [id])
+        // return client.get(`product:${id}`, (err, results) => {
+        //     if (results) {
+        //         const resultJSON = JSON.parse(results);
+        //         return res.set({'source': 'redis'}).status(200).send(resultJSON);
+        //     } else {
+                // return dbPromise.any(`select products.data from products where id=$1`, [id])
+                dbPromise.any(`select products.data from products where id=$1`, [id])
                 .then(result => {
-                    client.setex(`product:${id}`, 3600, JSON.stringify(result));
+                    // client.setex(`product:${id}`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);
                 })
                 .catch(err => {
                     return res.status(404).send(err);
             });
-            }
-        });
-    });
+            });
+        // });
+    // });
 
 
     app.get(`/products`, (req, res) => {
-        return client.get(`products`, (err, results) => {
-            if (results) {
-                const resultJSON = JSON.parse(results);
-                return res.set({'source': 'redis'}).status(200).send(resultJSON);
-            } else {
-                return dbPromise.any(`select products.data from products limit 25`)
+        // return client.get(`products`, (err, results) => {
+        //     if (results) {
+        //         const resultJSON = JSON.parse(results);
+        //         return res.set({'source': 'redis'}).status(200).send(resultJSON);
+        //     } else {
+        //         return dbPromise.any(`select products.data from products limit 25`)
+                dbPromise.any(`select products.data from products limit 25`)
                 .then(result => {
-                    client.setex(`products`, 3600, JSON.stringify(result));
+                    // client.setex(`products`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);
                 })
                 .catch(err => {
                     return res.status(404).send(err);
             });
-            }
-        });
-    });
+            });
+        // });
+    // });
   
     app.listen(port, () => console.log(`you're listening to port ${port}`));
 //   }
