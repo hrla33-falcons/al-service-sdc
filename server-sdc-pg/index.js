@@ -22,10 +22,7 @@ promise.promisifyAll(redis.Multi.prototype);
 const app = express();
 const port = 3001;
 
-const client = redis.createClient({
-    port: 6379,
-    host: '127.0.0.1'
-});
+const client = redis.createClient(6379, '172.31.3.120');
 
 client.on('connect', () => {
     console.log(`connected to redis`);
@@ -38,6 +35,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(morgan('dev'));
+
 app.use('/other', router);
 
 if (cluster.isMaster) {
@@ -48,7 +46,7 @@ if (cluster.isMaster) {
 
   function masterProcess() {
     console.log(`Master ${process.pid} is running!`);
-  
+
     for (let i = 0; i < numCPUs; i++) {
       console.log(`Forking process num ${i}...`);
       cluster.fork();
@@ -65,8 +63,7 @@ if (cluster.isMaster) {
                 const resultJSON = JSON.parse(results);
                 return res.set({'source': 'redis'}).status(200).send(resultJSON);
             } else {
-                // return dbPromise.any(`select products.data from products where id=$1`, [id])
-                dbPromise.any(`select products.data from products where id=$1`, [id])
+                return dbPromise.any(`select * from products where id=$1`, [id])
                 .then(result => {
                     client.setex(`product:${id}`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);
@@ -74,9 +71,10 @@ if (cluster.isMaster) {
                 .catch(err => {
                     return res.status(404).send(err);
             });
-            };
+            }
         });
     });
+
 
     app.get(`/products`, (req, res) => {
         return client.get(`products`, (err, results) => {
@@ -84,8 +82,7 @@ if (cluster.isMaster) {
                 const resultJSON = JSON.parse(results);
                 return res.set({'source': 'redis'}).status(200).send(resultJSON);
             } else {
-                // return dbPromise.any(`select products.data from products limit 25`)
-                dbPromise.any(`select products.data from products limit 25`)
+                return dbPromise.any(`select * from products limit 25`)
                 .then(result => {
                     client.setex(`products`, 3600, JSON.stringify(result));
                     return res.set({'source': 'postgres'}).status(200).send(result);
@@ -94,9 +91,9 @@ if (cluster.isMaster) {
                     return res.status(404).send(err);
             });
             }
-            app.listen(port, () => console.log(`you're listening to port ${port}`));
-            });
         });
-}
+    });
 
+    app.listen(port, () => console.log(`you're listening to port ${port}`));
+  }
 module.exports = app;
