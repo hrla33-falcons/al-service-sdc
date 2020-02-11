@@ -1,2 +1,3 @@
-# al-sdc-recommended-products-service
-# al-service-sdc
+Recommended Products & Similar Products Microservices for IKEA Backend Project
+Install dependencies - npm install
+Run Server - npm start
