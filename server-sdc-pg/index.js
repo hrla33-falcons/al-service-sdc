@@ -75,6 +75,23 @@ if (cluster.isMaster) {
         });
     });
 
+    app.get(`/products/:id`, (req, res) => {
+        return client.get(`products_${req.params._id}`, (err, results) => {
+            if (results) {
+                const resultJSON = JSON.parse(results);
+                return res.set({'source': 'redis'}).status(200).send(resultJSON);
+            } else {
+                return dbPromise.any(`select * from products where id = ${req.params._id}`)
+                .then(result => {
+                    client.setex(`products`, 3600, JSON.stringify(result));
+                    return res.set({'source': 'postgres'}).status(200).send(result);
+                })
+                .catch(err => {
+                    return res.status(404).send(err);
+            });
+            }
+        });
+    });
 
     app.get(`/products`, (req, res) => {
         return client.get(`products`, (err, results) => {

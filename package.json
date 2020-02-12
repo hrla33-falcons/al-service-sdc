@@ -7,7 +7,10 @@
     "build:dev": "webpack -d --watch",
     "start": "node server-sdc-pg/index.js",
     "start:dev": "nodemon server-sdc-pg/index.js -w server -w database-mysql",
-    "seed": "node database/seed.js"
+    "createdb": "node db_pg/seed/createModel.js",
+    "createcsv": "node db_pg/seed/convertToCSV.js",
+    "seed": "node db_pg/seed/seedDb.js",
+    "setupdb": "npm run createdb && npm run createcsv && npm run seed"
   },
   "author": "object Object",
   "license": "ISC",
