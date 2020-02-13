@@ -1,11 +1,11 @@
 
 const {Pool} = require('pg')
 const db = new Pool({
-    host: '172.31.3.120', // server name or IP address;
+    host: 'localhost', // server name or IP address;
     port: 5432,
     database: 'sdc_pg',
-    user: 'ubuntu',
-    password: 'pw',
+    user: 'austinliu',
+    // password: 'pw',
     max: 15,
     idleTimeoutMillis: 3000,
     connectionTimeOutMillis: 2000

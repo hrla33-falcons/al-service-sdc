@@ -29,6 +29,8 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
 
+Also, change connection params in /db-pg/query/dbGet.js to your database connection params
+
 ## Development
 
 
