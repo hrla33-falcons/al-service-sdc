@@ -1,7 +1,7 @@
 {
-    "host": "ec2-54-183-209-135.us-west-1.compute.amazonaws.com",
+    "host": "database-1.cdz6xj237ie2.us-west-1.rds.amazonaws.com",
     "user": "postgres",
-    "password": "1234",
-    "db": "sdc_pg",
+    "password": "postgres",
+    "db": "postgres",
     "port": "5432"
 }

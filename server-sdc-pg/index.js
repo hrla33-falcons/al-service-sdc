@@ -1,6 +1,7 @@
 // jshint esversion:6
 // const newrelic = require('newrelic');
 const express = require('express');
+const next = require('next');
 // const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const router = require('./router.js');
@@ -20,7 +21,19 @@ promise.promisifyAll(redis.RedisClient.prototype);
 promise.promisifyAll(redis.Multi.prototype);
 
 const app = express();
-const port = 3001;
+const port = parseInt(process.env.PORT, 10) || 3001;
+const dev = process.env.NODE_ENV !== 'production';
+
+const app1 = next({ dev });
+const handle = app1.getRequestHandler();
+
+app1.prepare().then(() => {
+    app.get('/', (req, res) => handle(req, res));
+    // app.listen(port, (err) => {
+    //  if (err) throw err;
+    //  console.log(`🤘 on http://localhost:${port}`);
+    // });
+   });
 
 const client = redis.createClient(6379, '172.31.3.120');
 
