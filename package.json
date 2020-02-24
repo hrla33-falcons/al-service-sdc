@@ -5,7 +5,7 @@
   "main": "server-sdc-pg/index.js",
   "scripts": {
     "build": "next build",
-    "start": "next",
+    "start": "node server-sdc-pg/index.js",
     "build:dev": "webpack -d --watch",
     "start:dev": "nodemon server-sdc-pg/index.js -w server -w database-mysql",
     "createdb": "node db_pg/seed/createModel.js",
