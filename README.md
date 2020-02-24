@@ -1,17 +1,17 @@
 # Recommended Products & Similar Products Microservices for IKEA Backend Project
 
 Rebuild of backend of IKEA clone recommended products & similar products services deployed to AWS EC2 T2 micros.
-\
+<br/>
 img1:
-\
+<br/>
 <img width="1000"
 alt="sample1" src="./img/img1.png">
-\
+<br/>
 img2:
-\
+<br/>
 <img width="1000"
 alt="sample2" src="./img/img2.png">
-\
+<br/>
 ## Table of Contents
 
 1. [Usage](#Usage)
