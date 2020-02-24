@@ -10,8 +10,10 @@ image 1:
 alt="sample1" src="./img/img1.png">
 &nbsp;
 &nbsp;
+<br/><br/>
 image 2:
 &nbsp;
+<br/><br/>
 <img width="1000"
 alt="sample2" src="./img/img2.png">
 &nbsp;
