@@ -14,6 +14,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    if (typeof(document) === 'undefined') {
+      global.document = {}
+  }
+
     this.state = {
       onLoadProducts: [],
       shownProducts: [],

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const modalRoot = document.getElementById("modal");
+
 
 class Modal extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Modal extends React.Component {
   componentDidMount() {
     // Append the element into the DOM on mount. We'll render
     // into the modal container element (see the HTML tab).
+    const modalRoot = document.getElementById("modal");
     modalRoot.appendChild(this.el);
   }
 

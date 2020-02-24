@@ -2,10 +2,11 @@
   "name": "ikeafec",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server-sdc-pg/index.js",
   "scripts": {
+    "build": "next build",
+    "start": "next",
     "build:dev": "webpack -d --watch",
-    "start": "node server-sdc-pg/index.js",
     "start:dev": "nodemon server-sdc-pg/index.js -w server -w database-mysql",
     "createdb": "node db_pg/seed/createModel.js",
     "createcsv": "node db_pg/seed/convertToCSV.js",
