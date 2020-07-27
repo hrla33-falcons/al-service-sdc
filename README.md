@@ -1,7 +1,8 @@
 # Recommended Products & Similar Products Microservices for IKEA Backend Project
 
-Rebuild of backend of legacy IKEA recommended products & similar products services deployed to AWS EC2 T2 micros.
-<br/><br/>s
+Backend optimization of legacy IKEA recommended products & similar products microservice
+<br/><br/>
+&nbsp;s
 &nbsp;
 &nbsp;
 Recommended & Similar Products Display:
