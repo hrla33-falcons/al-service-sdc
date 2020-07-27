@@ -1,8 +1,8 @@
-# Recommended Products & Similar Products Microservices for IKEA Backend Project
+# Distributed Systems Backend Optimization Capstone Project
 
 Backend optimization of legacy IKEA recommended products & similar products microservice
 <br/><br/>
-&nbsp;s
+&nbsp;
 &nbsp;
 &nbsp;
 Recommended & Similar Products Display:
