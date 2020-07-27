@@ -1,11 +1,11 @@
 # Distributed Systems Backend Optimization Capstone Project
 
-Backend optimization of legacy IKEA recommended products & similar products microservice
+Backend optimization of legacy IKEA recommended products & similar products microservice to achieve low latency & error rate under high throughput.
 <br/><br/>
 &nbsp;
 &nbsp;
 &nbsp;
-Recommended & Similar Products Display:
+Legacy Recommended & Similar Products Display (Unmodified):
 &nbsp;
 <img width="1000"
 alt="sample1" src="./img/img1.png">
